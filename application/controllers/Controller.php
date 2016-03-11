@@ -15,17 +15,21 @@ class Controller extends CI_Controller   {
 
     public function index()
     {
-        $this->load->view('Header');
+        $this->load->view('Header_connection');
         $this->load->view('ViewConnection');
     }
 
     public function summit(){
+       $this->load>model('user_m');
+
         $data = array(
             'email' => $this->input->post('courriel'),
             'pwd'=>$this->input->post('pwd')
         );
-        echo json_encode($data);
-        $this->user_m->validate_user($data);
+        $profile = $this->user_m->validate_user($data);
+        if ($profile) {$this->Controller->AddClient();
+        }
+
     }
 
     public function ModifyClient(){

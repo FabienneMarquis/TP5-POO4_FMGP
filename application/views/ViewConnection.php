@@ -39,7 +39,7 @@
             echo form_label('Votre courriel');//afficher le label Votre nom
             // Champ Nom
             $data_name = array(
-                'name' => 'name',
+                'courriel' => 'courriel',
                 'class' => 'input_box',
                 'placeholder' => 'SVP entrez votre Courriel',
                 'id' => 'courriel'
