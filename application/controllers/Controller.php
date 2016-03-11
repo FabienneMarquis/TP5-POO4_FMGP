@@ -6,25 +6,36 @@
  * Time: 15:25
  */
 
-class clientController extends Controller   {
+class Controller extends CI_Controller   {
 
-    function clientController(){
-        parent::Controller();
-        $this->load->library('unit_test');
-        $this->load->model('client_model');
+    public function AddClient(){
+        $this->load->view('Header');
+        $this->load->view('AddClient');
     }
 
     public function index()
     {
-        $this->load->helper(array('form'));
-        $this->compositeurs_model;
-        $compositeurs =  $this->compositeurs_model->findAll();
-        $config['total_rows'] = $this->compositeurs_model->getCountTable();
-        $data['context'] = 'list';
-        $data['titre'] = 'Vos coordonnées';
-        $data['liste_compositeurs'] = array('liste_compositeurs'=> $compositeurs);
-        $this->load->view('layout',$data);
+        $this->load->view('Header');
+        $this->load->view('ViewConnection');
+    }
 
+    public function summit(){
+        $data = array(
+            'email' => $this->input->post('courriel'),
+            'pwd'=>$this->input->post('pwd')
+        );
+        echo json_encode($data);
+        $this->user_m->validate_user($data);
+    }
+
+    public function ModifyClient(){
+        $this->load->view('Header');
+        $this->load->view('ModifyClient');
+    }
+
+    public function Consulter(){
+        $this->load->view('Header');
+        $this->load->view('Consulter');
     }
 
     public function add()
@@ -66,40 +77,13 @@ class clientController extends Controller   {
     }
 
 
-    public function show_add()
-    {
-
-        $data['context'] = 'edit';
-        $data['mode'] = 'add';
-        $data['mode_titre'] = 'Ajouter';
-        $data['titre'] = 'Liste de compositeurs';
-        $data['compositeur'] = array();
-        $data['id'] = '';
-        $data['titre_edit'] = 'Ajouter un compositeur';
-        $this->load->view('layout',$data);
-    }
-
-
-    public function update()
-    {
-
-        $data['id'] = $this->input->post('id',TRUE);
-        $data['nom'] = $this->input->post('nom',TRUE);
-        $data['prenom'] = $this->input->post('prenom',TRUE);
-        $this->client_model->update($data['id'],$data);
-        $data['titre'] = 'Saisie validée';
-        $data['context'] = 'message';
-        $this->load->view('layout',$data);
-
-    }
-
     public function testClientExists()
     {
 
         $prenom = $this->input->post('prenom',TRUE);
         $nom = $this->input->post('nom',TRUE);
 
-        $test = $this->client_model->isCompositeurExists($nom,$prenom);
+        $test = $this->client_model->isClientExists($nom,$prenom);
 
         if ($test)
         {

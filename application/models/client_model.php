@@ -68,7 +68,7 @@ class Client_model extends CI_Model  {
         $this->db->delete('client', array('id' => $id));
     }
 
-    function isCompositeurExists($nom,$prenom)
+    function isClientExists($nom,$prenom)
     {
         $query = $this->db->get_where('client', array('nom' => $nom,'prenom'=>$prenom));
         return $query->num_rows() > 0  ;

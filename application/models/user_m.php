@@ -1,12 +1,12 @@
 <?php
 //var $details;
 
-function validate_user( $email, $password ) {
+function validate_user( $email, $pwd ) {
 	// Build a query to retrieve the user's details
 	// based on the received username and password
-	$this->db->from('membres');
+	$this->db->from('utilisateur');
 	$this->db->where('adresse_email',$email );
-	$this->db->where( 'mot_de_passe', sha1($password) );
+	$this->db->where( 'mot_de_passe', sha1($pwd) );
 	$login = $this->db->get()->result();
 
 	// The results of the query are stored in $login.
