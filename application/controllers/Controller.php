@@ -19,17 +19,39 @@ class Controller extends CI_Controller   {
         $this->load->view('ViewConnection');
     }
 
-    public function summit(){
-       $this->load>model('user_m');
-
+    public function sign_up(){
         $data = array(
             'email' => $this->input->post('courriel'),
             'pwd'=>$this->input->post('pwd')
         );
-        $profile = $this->user_m->validate_user($data);
-        if ($profile) {$this->Controller->AddClient();
-        }
+       $this->load>model('user_m');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('username', 'Username', 'callback_username_check');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
+        if ($this->form_validation->run() == FALSE)
+        {
+            $profile = $this->user_m->validate_user($data);
+            if ($profile) {$this->Controller->AddClient();
+            }
+        }
+        else
+        {
+            $this->load->view('formsuccess');
+        }
+    }
+
+    public function username_check($str)
+    {
+        if ($str == 'test')
+        {
+            $this->form_validation->set_message('username_check', 'The %s field can not be the word "test"');
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
     }
 
     public function ModifyClient(){
@@ -53,7 +75,7 @@ class Controller extends CI_Controller   {
         $this->client_model->add($data);
         $data['context'] = 'message';
         $data['titre'] = 'Saisie validée';
-        $this->load->view('layout',$data);
+        $this->load->view('addClient');
     }
 
     public function  delete()
@@ -63,7 +85,6 @@ class Controller extends CI_Controller   {
         $this->client_model->delete($id);
         $data['context'] = 'message';
         $this->load->view('layout',$data);
-
     }
 
     public function show_update($id=-1)
