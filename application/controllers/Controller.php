@@ -31,14 +31,24 @@ class Controller extends CI_Controller   {
 
         if ($this->form_validation->run() == FALSE)
         {
+           //mettre view erreur?
+        }
+        else
+        {
             $profile = $this->user_m->validate_user($data);
             if ($profile) {$this->Controller->AddClient();
             }
         }
-        else
-        {
-            $this->load->view('formsuccess');
-        }
+    }
+
+    public function update(){
+        $data['nom'] = $this->input->post('nom',TRUE);
+        $data['prenom'] = $this->input->post('prenom',TRUE);
+        $data['ageClient'] = $this->input->post('age',TRUE);
+        $data['courrielClient'] = $this->input->post('nom',TRUE);
+        $data['adresse'] = $this->input->post('prenom',TRUE);
+        $data['idVille'] = $this->input->post('age',TRUE);
+        $this->client_model->update($data);
     }
 
     public function username_check($str)
@@ -80,26 +90,11 @@ class Controller extends CI_Controller   {
 
     public function  delete()
     {
-
         $id = $this->uri->segment(3,-1);
         $this->client_model->delete($id);
         $data['context'] = 'message';
-        $this->load->view('layout',$data);
     }
 
-    public function show_update($id=-1)
-    {
-        if($id==-1)
-            $id = $this->uri->segment(3,-1);
-        $data['compositeur'] = array('compositeur'=> $this->client_model->find($id));
-        $data['context'] = 'edit';
-        $data['mode'] = 'update';
-        $data['mode_titre'] = 'Modifier';
-        $data['id'] = $id;
-        $data['titre'] = 'Liste de compositeurs';
-        $data['titre_edit'] = 'Modifier un compositeur';
-        $this->load->view('layout',$data);
-    }
 
 
     public function testClientExists()
