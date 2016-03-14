@@ -5,12 +5,21 @@
  * Date: 2016-03-11
  * Time: 11:13
  */ ?>
+<html>
+<head>
 
-<h1>Laboratoire 5- H2016</h1>
-<table>
-    <tr>
-        <th><h3><a href="<?php echo base_url() ?>index.php/Controller/AddClient"> Ajouter un client</a></h3></th>
-        <th><h3><a href="<?php echo base_url() ?>index.php/Controller/ModifyClient">Modifier un client</a></h3></th>
-        <th><h3><a href="<?php echo base_url() ?>index.php/Controller/Consulter">Consulter des produits</a></h3></th>
-    </tr>
-</table>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta name="csrf_token" content="{{ csrf_token() }}">
+    <title>Lifting Bro</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+

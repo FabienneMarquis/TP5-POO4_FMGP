@@ -10,23 +10,26 @@ class Controller extends CI_Controller   {
 
     public function AddClient(){
         $this->load->view('Header');
+        $this->load->view('NavBar');
         $this->load->view('AddClient');
+        $this->load->view('Footer');
     }
 
     public function index()
     {
-        $this->load->view('Header_connection');
-        $this->load->view('ViewConnection');
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('Footer');
     }
 
-    public function summit(){
-       $this->load>model('user_m');
+    public function submit(){
+       $this->load->model('user_m');
 
         $data = array(
             'email' => $this->input->post('courriel'),
             'pwd'=>$this->input->post('pwd')
         );
-        $profile = $this->user_m->validate_user($data);
+        $profile = $this->user_m->validate_user($data['email'],$data['pwd']);
         if ($profile) {$this->Controller->AddClient();
         }
 
