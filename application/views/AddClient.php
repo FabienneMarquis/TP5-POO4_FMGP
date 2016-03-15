@@ -5,28 +5,29 @@
  * Date: 2016-03-11
  * Time: 09:56
  */ ?>
-<div class="container">
-    <!--<link rel="stylesheet" type="text/css" href="--><?php //echo base_url(); ?><!--css/style.css">-->
-    <script type="text/javascript">
+<!--<link rel="stylesheet" type="text/css" href="--><?php //echo base_url(); ?><!--css/style.css">-->
+<script type="text/javascript">
 
-        // Ajax post
-        $(document).ready(function () {
-            $("#submit").click(function (event) {
-                event.preventDefault();
-                var courriel = $("input#email").val();
-                var password = $("input#pwd").val();
-                jQuery.ajax({
-                    type: "POST",
-                    url: "<?php echo base_url(); ?>" + "index.php/Controller/submit",
-                    dataType: 'json',
-                    data: {email: courriel, pwd: password}
-                })
-            });
+    // Ajax post
+    $(document).ready(function () {
+        $("#submit").click(function (event) {
+            event.preventDefault();
+            var courriel = $("input#email").val();
+            var password = $("input#pwd").val();
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>" + "index.php/Controller/submit",
+                dataType: 'json',
+                data: {email: courriel, pwd: password}
+            })
         });
-    </script>
-
-
-
+        $("#effacer").click(function(event){
+            event.preventDefault();
+            $(".form-control").val("");
+        });
+    });
+</script>
+<div class="container">
     <div class="panel panel-default">
         <div class="panel-heading"><h4>Vos coordonnées</h4></div>
         <div class="panel-body">
@@ -67,7 +68,7 @@
                         <input name="couriel" type="text" class="form-control" placeholder="Couriel">
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary">Effacer</button>
+                <button type="button" id="effacer" class="btn btn-primary">Effacer</button>
                 <button type="submit" id="submit" class="btn btn-primary">Ajouter</button>
             </form>
         </div>

@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">TP5-POO4</a>
+            <a class="navbar-brand" href="<?php echo base_url() ?>index.php">TP5-POO4</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,7 +18,10 @@
                 <li><a href="<?php echo base_url() ?>index.php/Controller/ModifyClient">Modifier un client</a></li>
                 <li><a href="<?php echo base_url() ?>index.php/Controller/Consulter">Consulter des produits</a></li>
             </ul>
-
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<?php echo base_url() ?>+index.php/Controller/Quitter">Quitter</a></li>
+            </ul>
         </div><!-- /.navbar-collapse -->
+
     </div><!-- /.container-fluid -->
 </nav>

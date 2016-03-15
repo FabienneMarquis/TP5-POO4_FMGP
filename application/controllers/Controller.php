@@ -35,14 +35,24 @@ class Controller extends CI_Controller   {
 
     }
 
-    public function ModifyClient(){
+    public function ModifyClient($id = 0){
+
         $this->load->view('Header');
-        $this->load->view('ModifyClient');
+        $this->load->view('NavBar');
+        if($id === 0){
+            $this->load->view('SelectClientToModify');
+        }else{
+            $this->load->view('ModifyClient',array("id"=>$id));
+        }
+
+        $this->load->view('Footer');
     }
 
     public function Consulter(){
         $this->load->view('Header');
+        $this->load->view('NavBar');
         $this->load->view('Consulter');
+        $this->load->view('Footer');
     }
 
     public function add()
