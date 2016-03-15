@@ -19,9 +19,15 @@ class Controller extends CI_Controller   {
     {
         $this->load->view('Header');
         $this->load->view('NavBar');
+        $this->load->view('ViewConnection');
         $this->load->view('Footer');
     }
-
+    public function login(){
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('Login');
+        $this->load->view('Footer');
+    }
     public function submit(){
        $this->load->model('user_m');
 
@@ -52,6 +58,15 @@ class Controller extends CI_Controller   {
         $this->load->view('Header');
         $this->load->view('NavBar');
         $this->load->view('Consulter');
+        $this->load->view('ConsulterItems',
+            array('items'=>array(
+                "code"=>1,
+                "description"=>"hello",
+                "prix"=>1,
+                "quantite"=>2,
+                "categorie"=>"derp"),
+                "mot_cle"=>"derp"
+            ));
         $this->load->view('Footer');
     }
 

@@ -19,7 +19,8 @@
                 <li><a href="<?php echo base_url() ?>index.php/Controller/Consulter">Consulter des produits</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo base_url() ?>+index.php/Controller/Quitter">Quitter</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/Controller/login">Login</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/Controller/Quitter">Quitter</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
 
