@@ -18,8 +18,6 @@ class Client_model extends CI_Model  {
             return false;
         }
 
-
-
         $query = $this->db->get('client',$start,$offset);
         $this->count = $query->num_rows();
         return $query->result();
@@ -47,7 +45,6 @@ class Client_model extends CI_Model  {
     {
         $query = $this->db->get('client');
         return $query->num_rows();
-
     }
 
 

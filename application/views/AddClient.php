@@ -23,6 +23,7 @@
         });
         $("#effacer").click(function(event){
             event.preventDefault();
+
             $(".form-control").val("");
         });
     });
@@ -63,9 +64,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 form-control-label">Couriel:</label>
+                    <label class="col-sm-2 form-control-label">Courriel:</label>
                     <div class="col-sm-10">
-                        <input name="couriel" type="text" class="form-control" placeholder="Couriel">
+                        <input name="courriel" type="text" class="form-control" placeholder="Courriel">
                     </div>
                 </div>
                 <button type="button" id="effacer" class="btn btn-primary">Effacer</button>
