@@ -14,7 +14,7 @@
     $(document).ready(function () {
         $(".submit").click(function (event) {
             event.preventDefault();
-            var courriel = $("input#email").val();
+            var courriel = $("input#courriel").val();
             var password = $("input#pwd").val();
             jQuery.ajax({
                 type: "POST",

@@ -32,7 +32,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h4>Vos coordonnées</h4></div>
         <div class="panel-body">
-            <form method="post" action="<?php echo base_url() ?>index.php/Controller/submit" role="form" class="form-horizontal">
+            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postAddClient" role="form" class="form-horizontal">
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Nom:</label>
                     <div class="col-sm-10">
@@ -64,9 +64,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 form-control-label">Couriel:</label>
+                    <label class="col-sm-2 form-control-label">Courriel:</label>
                     <div class="col-sm-10">
-                        <input name="couriel" type="text" class="form-control" placeholder="Couriel">
+                        <input name="courriel" type="text" class="form-control" placeholder="Courriel">
                     </div>
                 </div>
                 <button type="button" id="effacer" class="btn btn-primary">Effacer</button>

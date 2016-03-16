@@ -1,12 +1,12 @@
 <?php
 //var $details;
 class User_m extends CI_Model {
-	function validate_user( $email, $pwd ) {
+	function validate_user( $email , $pwd) {
 		// Build a query to retrieve the user's details
 		// based on the received username and password
 		$this->db->from('utilisateur');
-		$this->db->where('adresse_email',$email );
-		$this->db->where( 'mot_de_passe', sha1($pwd) );
+		$this->db->where('adresseEmail',$email );
+		$this->db->where( 'motDePasse', sha1($pwd) );
 		$login = $this->db->get()->result();
 
 		// The results of the query are stored in $login.
@@ -37,5 +37,11 @@ class User_m extends CI_Model {
 				'isLoggedIn'=>true
 			)
 		);
+	}
+
+	function signUp($data){
+		$this->db->from('utilisateur');
+		$this->db->insert('utilisateur', $data);
+		return $this->db->insert_id();
 	}
 }

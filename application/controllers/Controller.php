@@ -25,6 +25,14 @@ class Controller extends CI_Controller
      */
     public function postAddClient()
     {
+        $data['nom'] = $this->input->post('nom', TRUE);
+        $data['prenom'] = $this->input->post('prenom', TRUE);
+        $data['ageClient'] = $this->input->post('age', TRUE);
+        $data['courrielClient'] = $this->input->post('nom', TRUE);
+        $data['adresse'] = $this->input->post('prenom', TRUE);
+        $data['idVille'] = $this->input->post('age', TRUE);
+        $this->client_model->add($data);
+        $this->load->view("addOk");
 
     }
 
@@ -34,6 +42,7 @@ class Controller extends CI_Controller
         $this->load->view('NavBar');
         $this->load->view('ViewConnection');
         $this->load->view('Footer');
+
     }
 
     /**
@@ -52,7 +61,17 @@ class Controller extends CI_Controller
      */
     public function postSignUp()
     {
-
+//        $data = array(
+//            'email' => $this->input->post('email'),
+//            'pwd' => $this->input->post('pwd')
+//        );
+        $data["adresseEmail"] = $this->input->post('email', TRUE);
+        $data["motDePasse"] = $this->input->post('pwd', TRUE);
+        $this->user_m->signUp($data);
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('ViewConnection');
+        $this->load->view('Footer');
     }
 
     /**
@@ -81,15 +100,6 @@ class Controller extends CI_Controller
         $this->load->view('Header');
         $this->load->view('NavBar');
         $this->load->view('Consulter');
-        $this->load->view('ConsulterItems',
-            array('items' => array(
-                "code" => 1,
-                "description" => "hello",
-                "prix" => 1,
-                "quantite" => 2,
-                "categorie" => "derp"),
-                "mot_cle" => "derp"
-            ));
         $this->load->view('Footer');
     }
 
@@ -99,6 +109,15 @@ class Controller extends CI_Controller
     public function postConsulter()
     {
 
+        $this->load->view('ConsulterItems',
+            array('items' => array(
+                "code" => 1,
+                "description" => "hello",
+                "prix" => 1,
+                "quantite" => 2,
+                "categorie" => "derp"),
+                "mot_cle" => "derp"
+            ));
     }
 
     /**
@@ -129,16 +148,18 @@ class Controller extends CI_Controller
 
     public function submit()
     {
-        $this->load->model('user_m');
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('AddClient');
+        $this->load->view('Footer');
+//        $email = $this->input->post('email', TRUE);
+//        $pwd = $this->input->post('passeword', TRUE);
+//        $bool= $this->user_m->validate_user($email, $pwd);
+//        if($bool== true){$this->load->view('Header');
+//            $this->load->view('NavBar');
+//            $this->load->view('AddClient');
+//            $this->load->view('Footer');}
 
-        $data = array(
-            'email' => $this->input->post('courriel'),
-            'pwd' => $this->input->post('pwd')
-        );
-        $profile = $this->user_m->validate_user($data['email'], $data['pwd']);
-        if ($profile) {
-            $this->Controller->AddClient();
-        }
 
     }
 
@@ -154,7 +175,7 @@ class Controller extends CI_Controller
         $this->client_model->add($data);
         $data['context'] = 'message';
         $data['titre'] = 'Saisie validée';
-        $this->load->view('layout', $data);
+        $this->load->view("AddClient");
     }
 
     public function delete()
