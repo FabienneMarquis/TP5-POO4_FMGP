@@ -69,15 +69,7 @@ class Controller extends CI_Controller
             $categories[] = $row;
         }
         $this->load->view('Consulter', array('categories' =>$categories));
-        $this->load->view('ConsulterItems',
-            array('items' => array(
-                "code" => 1,
-                "description" => "hello",
-                "prix" => 1,
-                "quantite" => 2,
-                "categorie" => "derp"),
-                "mot_cle" => "derp"
-            ));
+
         $this->load->view('Footer');
     }
 
