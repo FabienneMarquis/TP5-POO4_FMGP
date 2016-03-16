@@ -17,7 +17,7 @@
             var password = $("input#pwd").val();
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "index.php/Controller/submit",
+                url: "<?php echo base_url(); ?>" + "index.php/Controller/postSignUp",
                 dataType: 'json',
                 data: {email: courriel, pwd: password}
             })
@@ -28,7 +28,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h4>Inscription</h4></div>
         <div class="panel-body">
-            <form method="post" action="<?php echo base_url() ?>index.php/Controller/login" role="form" class="form-horizontal">
+            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postSignUp" role="form" class="form-horizontal">
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Courriel:</label>
                     <div class="col-sm-10">
@@ -38,7 +38,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Mot de passe:</label>
                     <div class="col-sm-10">
-                        <input name="pwd" type="password" class="form-control" placeholder="">
+                        <input name="pwd" type="password" class="form-control" placeholder="******">
                     </div>
                 </div>
                 <div class="form-group row">

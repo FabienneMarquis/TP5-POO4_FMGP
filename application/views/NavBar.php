@@ -14,12 +14,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<?php echo base_url() ?>index.php/Controller/AddClient"> Ajouter un client<span class="sr-only">(current)</span></a></li>
-                <li><a href="<?php echo base_url() ?>index.php/Controller/ModifyClient">Modifier un client</a></li>
-                <li><a href="<?php echo base_url() ?>index.php/Controller/Consulter">Consulter des produits</a></li>
+                <li class="active"><a href="<?php echo base_url() ?>index.php/Controller/getAddClient"> Ajouter un client<span class="sr-only">(current)</span></a></li>
+                <li><a href="<?php echo base_url() ?>index.php/Controller/getModifyClient">Modifier un client</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/Controller/getConsulter">Consulter des produits</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo base_url() ?>index.php/Controller/login">Login</a></li>
+                <li><a href="<?php echo base_url() ?>index.php/Controller/getSignUp">Sign Up</a></li>
                 <li><a href="<?php echo base_url() ?>index.php/Controller/Quitter">Quitter</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

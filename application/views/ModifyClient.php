@@ -8,7 +8,7 @@
             var password = $("input#pwd").val();
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "index.php/Controller/submit",
+                url: "<?php echo base_url(); ?>" + "index.php/Controller/postModifyClient",
                 dataType: 'json',
                 data: {email: courriel, pwd: password}
             })
@@ -20,7 +20,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h4>Modifiez vos coordonnées <?php echo $id;?></h4></div>
         <div class="panel-body">
-            <form method="post" action="<?php echo base_url() ?>index.php/Controller/submit" role="form" class="form-horizontal">
+            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postModifyClient" role="form" class="form-horizontal">
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Nom:</label>
                     <div class="col-sm-10">
