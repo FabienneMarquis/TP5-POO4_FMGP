@@ -1,10 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: 0940135
- * Date: 2016-03-15
- * Time: 16:23
- */?>
+ * User: 1494778
+ * Date: 2016-03-11
+ * Time: 09:48
+ */ ?>
 <script type="text/javascript">
 
     // Ajax post
@@ -15,7 +15,7 @@
             var password = $("input#pwd").val();
             jQuery.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>" + "index.php/Controller/postSignUp",
+                url: "<?php echo base_url(); ?>" + "index.php/Controller/postLogin",
                 dataType: 'json',
                 data: {email: courriel, pwd: password}
             })
@@ -24,9 +24,9 @@
 </script>
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"><h4>Inscription</h4></div>
+        <div class="panel-heading"><h4>Connection</h4></div>
         <div class="panel-body">
-            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postSignUp" role="form" class="form-horizontal">
+            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postLogin" role="form" class="form-horizontal">
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Courriel:</label>
                     <div class="col-sm-10">
@@ -39,16 +39,10 @@
                         <input name="pwd" type="password" class="form-control" placeholder="******">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 form-control-label">Retappez:</label>
-                    <div class="col-sm-10">
-                        <input name="pwd2" type="password" class="form-control" placeholder="******">
-                    </div>
-                </div>
-                <button type="button" id="effacer" class="btn btn-primary">Effacer</button>
-                <button type="submit" id="submit" class="btn btn-primary">Inscription</button>
+                <button type="submit" id="submit" class="btn btn-primary">Connection</button>
             </form>
         </div>
     </div>
 </div>
+
 

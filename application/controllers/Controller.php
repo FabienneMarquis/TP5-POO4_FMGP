@@ -32,7 +32,7 @@ class Controller extends CI_Controller
     {
         $this->load->view('Header');
         $this->load->view('NavBar');
-        $this->load->view('ViewConnection');
+        $this->load->view('Login');
         $this->load->view('Footer');
     }
 
@@ -55,23 +55,7 @@ class Controller extends CI_Controller
 
     }
 
-    /**
-     * Function to display de form about selecting the client to modify
-     */
-    public function getSelectClient()
-    {
-        $this->load->view('Header');
-        $this->load->view('NavBar');
-        $this->load->view('SelectClientToModify');
-        $this->load->view('Footer');
-    }
 
-    /**
-     * Function to receive the POST form of the selected client
-     */
-    public function postSelectClient(){
-
-    }
 
     /**
      * Function to display the Consulter form
@@ -101,6 +85,23 @@ class Controller extends CI_Controller
 
     }
 
+    /**
+     * Function to display de form about selecting the client to modify
+     */
+    public function getSelectClient()
+    {
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('SelectClientToModify');
+        $this->load->view('Footer');
+    }
+
+    /**
+     * Function to receive the POST form of the selected client
+     */
+    public function postSelectClient(){
+
+    }
     /**
      * Function to display a client to modify
      * @param int $id
