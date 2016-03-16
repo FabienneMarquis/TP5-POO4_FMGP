@@ -23,6 +23,7 @@
         });
         $("#effacer").click(function(event){
             event.preventDefault();
+
             $(".form-control").val("");
         });
     });
