@@ -40,7 +40,7 @@ class Controller extends CI_Controller
     {
         $this->load->view('Header');
         $this->load->view('NavBar');
-        $this->load->view('ViewConnection');
+        $this->load->view('Login');
         $this->load->view('Footer');
 
     }
@@ -74,6 +74,47 @@ class Controller extends CI_Controller
         $this->load->view('Footer');
     }
 
+
+    /**
+     * Function to display the Consulter form
+     */
+    public function getConsulter()
+    {
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $categories = array();
+        $query = $this->db->get('categorie');
+        foreach ($query->result() as $row) {
+            $categories[] = $row;
+        }
+        $this->load->view('Consulter', array('categories' =>$categories));
+        $this->load->view('ConsulterItems',
+            array('items' => array(
+                "code" => 1,
+                "description" => "hello",
+                "prix" => 1,
+                "quantite" => 2,
+                "categorie" => "derp"),
+                "mot_cle" => "derp"
+            ));
+        $this->load->view('Footer');
+    }
+
+    /**
+     * Function to receive the Consulter form POST
+     */
+    public function postConsulter()
+    {
+        $mot = $this->input->post('mot');
+        $categorie = $this->input->post('categorie');
+        $trie = $this->input->post('trie');
+        $order = $this->input->post('order');
+
+        $this->load->model('Produit_model');
+        $produits = $this->Produit_model->get_sorted_produits($mot,$categorie,$trie,$order);
+        echo json_encode($produits);
+    }
+
     /**
      * Function to display de form about selecting the client to modify
      */
@@ -88,36 +129,9 @@ class Controller extends CI_Controller
     /**
      * Function to receive the POST form of the selected client
      */
-    public function postSelectClient(){
-
-    }
-
-    /**
-     * Function to display the Consulter form
-     */
-    public function getConsulter()
-    {
-        $this->load->view('Header');
-        $this->load->view('NavBar');
-        $this->load->view('Consulter');
-        $this->load->view('Footer');
-    }
-
-    /**
-     * Function to receive the Consulter form POST
-     */
-    public function postConsulter()
+    public function postSelectClient()
     {
 
-        $this->load->view('ConsulterItems',
-            array('items' => array(
-                "code" => 1,
-                "description" => "hello",
-                "prix" => 1,
-                "quantite" => 2,
-                "categorie" => "derp"),
-                "mot_cle" => "derp"
-            ));
     }
 
     /**
