@@ -56,7 +56,6 @@ class Controller extends CI_Controller
     }
 
 
-
     /**
      * Function to display the Consulter form
      */
@@ -64,7 +63,12 @@ class Controller extends CI_Controller
     {
         $this->load->view('Header');
         $this->load->view('NavBar');
-        $this->load->view('Consulter');
+        $categories = array();
+        $query = $this->db->get('categorie');
+        foreach ($query->result() as $row) {
+            $categories[] = $row;
+        }
+        $this->load->view('Consulter', array('categories' =>$categories));
         $this->load->view('ConsulterItems',
             array('items' => array(
                 "code" => 1,
@@ -82,7 +86,14 @@ class Controller extends CI_Controller
      */
     public function postConsulter()
     {
+        $mot = $this->input->post('mot');
+        $categorie = $this->input->post('categorie');
+        $trie = $this->input->post('trie');
+        $order = $this->input->post('order');
 
+        $this->load->model('Produit_model');
+        $produits = $this->Produit_model->get_sorted_produits($mot,$categorie,$trie,$order);
+        echo json_encode($produits);
     }
 
     /**
@@ -99,9 +110,11 @@ class Controller extends CI_Controller
     /**
      * Function to receive the POST form of the selected client
      */
-    public function postSelectClient(){
+    public function postSelectClient()
+    {
 
     }
+
     /**
      * Function to display a client to modify
      * @param int $id
