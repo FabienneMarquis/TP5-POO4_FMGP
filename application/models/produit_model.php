@@ -1,71 +1,37 @@
 <?php
-
 /**
  * Created by PhpStorm.
- * User: 1494778
- * Date: 2016-03-14
- * Time: 13:33
+ * User: 0940135
+ * Date: 2016-03-16
+ * Time: 13:53
  */
-class produit_model extends CI_Model
-{
-    protected $table = 'produit';
-
-    function __construct()
-    {
-        parent::__construct();
-
+class Produit_model extends CI_Model  {
+    public $codeArticle;
+    public $description;
+    public $prix;
+    public $quantite;
+    public $idCategorie;
+    public function __construct()	{
+        $this->load->database();
     }
-
-    public function findAll()
-    {
-        $query = $this->db->get($this->table);
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return false;
+    public function get_produits($id) {
+        if($id != FALSE) {
+            $query = $this->db->get_where('news', array('id' => $id));
+            return $query->row_array();
         }
-
-        $query = $this->db->get('produit', $start, $offset);
-        $this->count = $query->num_rows();
+        else {
+            return FALSE;
+        }
+    }
+    public function get_sorted_produits($mot,$categorie,$trie,$order){
+        if($mot != FALSE){
+            $this->db->like('description',$mot);
+        }
+        if($categorie != FALSE && $categorie != 'tous'){
+            $this->db->where('idCategorie',$categorie);
+        }
+        $this->db->order_by($trie,$order);
+        $query = $this->db->get('produit');
         return $query->result();
     }
-
-    public function findKeyWord($kw)
-    {
-        //à vérifier
-        $query = $this->db->get_where('produit', array('descriptions' => $kw));
-        return $query->row();
-    }
-
-    public function findCategorie($idCat)
-    {
-        $query = $this->db->get_where('produit', array('idCategorie' => $idCat));
-        return $query->row();
-    }
-
-    public function findOrderBy($by, $type, $idCat)
-    {
-        if ($type == "croissant") {
-            switch ($by) {
-                case "prix":
-                    $query="";
-                    break;
-                case "quantity":
-
-                    break;
-            }
-        } else if ($type == "decroissant") {
-            switch ($by) {
-                case "prix":
-
-                    break;
-                case "quantity":
-
-                    break;
-            }
-        }
-        return $query->row();
-    }
-
-
 }
