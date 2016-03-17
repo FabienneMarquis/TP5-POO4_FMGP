@@ -24,14 +24,6 @@ class Controller extends CI_Controller
         }
     }
 
-    public function addClient()
-    {
-        $this->load->view('Header');
-        $this->load->view('NavBar');
-        $this->load->view('addOk');
-        $this->load->view('Footer');
-    }
-
     /**
      * Function to receive the POST from the AddClient form
      */
@@ -167,15 +159,22 @@ class Controller extends CI_Controller
     function getModifyClient($id = 0)
     {
         if (isset($this->session->userdata['isLoggedIn']) && $this->session->userdata['isLoggedIn']) {
+
             $this->load->view('Header');
             $this->load->view('NavBar');
             if ($id === 0) {
                 $this->load->view('SelectClientToModify');
             } else {
+                $req = $this->client_model->find($id);
+                if(!$req.is_null()){
                 $this->load->view('ModifyClient', array("id" => $id));
+                //loader les info du row dans le formulaire ...
+                    }
+                else{$this->load->view('SelectClientToModify');}
             }
 
             $this->load->view('Footer');
+
         } else {
             redirect('/', 'refresh');
         }
@@ -189,6 +188,8 @@ class Controller extends CI_Controller
     function postModifyClient()
     {
         $id = $this->input->post('id',true);
+
+
         $data['nom'] = $this->input->post('nom', TRUE);
         $data['prenom'] = $this->input->post('prenom', TRUE);
         $data['ageClient'] = $this->input->post('age', TRUE);
@@ -225,32 +226,6 @@ class Controller extends CI_Controller
         $data['titre'] = 'Saisie validée';
         $this->load->view("AddClient");
     }
-
-    public function delete()
-    {
-
-        $id = $this->uri->segment(3, -1);
-        $this->client_model->delete($id);
-        $data['context'] = 'message';
-        $this->load->view('layout', $data);
-
-    }
-
-    public
-    function show_update($id = -1)
-    {
-        if ($id == -1)
-            $id = $this->uri->segment(3, -1);
-        $data['compositeur'] = array('compositeur' => $this->client_model->find($id));
-        $data['context'] = 'edit';
-        $data['mode'] = 'update';
-        $data['mode_titre'] = 'Modifier';
-        $data['id'] = $id;
-        $data['titre'] = 'Liste de compositeurs';
-        $data['titre_edit'] = 'Modifier un compositeur';
-        $this->load->view('layout', $data);
-    }
-
 
     public
     function testClientExists()
