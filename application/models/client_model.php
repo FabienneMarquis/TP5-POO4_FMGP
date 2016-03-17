@@ -51,7 +51,9 @@ class Client_model extends CI_Model  {
     function add($data)
     {
         $this->db->insert('client', $data);
-        return $this->db->insert_id();
+        if (!$this->db->insert_id().is_null()){
+            return true;
+        }else {return false;}
     }
 
     function update($id,$data)
