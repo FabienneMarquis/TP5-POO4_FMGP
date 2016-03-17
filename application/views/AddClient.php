@@ -27,7 +27,6 @@
         });
         $("#effacer").click(function(event){
             event.preventDefault();
-
             $(".form-control").val("");
         });
     });
@@ -64,7 +63,14 @@
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Ville:</label>
                     <div class="col-sm-10">
-                        <input name="ville" type="text" class="form-control" placeholder="Ville">
+                        <select name='ville' id='ville' class="form-control" placeholder="Ville">
+                            <?php
+                            $req=$this->bd->get('ville');
+                            while($donnees = $req->fetch()){
+                            ?><option value='<?php echo $donnees[1]; ?>'> <?php echo $donnees[1]; ?> </option>
+                            <?php } ?>
+                        </select>
+
                     </div>
                 </div>
                 <div class="form-group row">
