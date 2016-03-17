@@ -6,4 +6,4 @@
  * Time: 11:45
  */
 ?>
-<h4>L'ajout ou les modifications ont été effectuées</h4>
+<h4>L'ajout ou les modifications ont été effectuées avec succès</h4>

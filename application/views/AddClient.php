@@ -12,13 +12,17 @@
     $(document).ready(function () {
         $("#submit").click(function (event) {
             event.preventDefault();
+            var nom = $("input#nom").val();
+            var prenom = $("input#prenom").val();
+            var age = $("input#age").val();
+            var ville = $("input#ville").val();
+            var adresse = $("input#adresse").val();
             var courriel = $("input#email").val();
-            var password = $("input#pwd").val();
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "index.php/Controller/postAddClient",
                 dataType: 'json',
-                data: {email: courriel, pwd: password}
+                data: {nom: nom, prenom: prenom, age: age, ville:ville, adresse:adresse, email: courriel}
             })
         });
         $("#effacer").click(function(event){

@@ -27,9 +27,10 @@ class Produit_model extends CI_Model  {
         if($mot != FALSE){
             $this->db->like('description',$mot);
         }
-        if($categorie != FALSE && $categorie != 'tous'){
-            $this->db->where('idCategorie',$categorie);
+        if($categorie != 'tous'){
+            $this->db->where('produit.idCategorie',$categorie);
         }
+        $this->db->join('categorie','produit.idCategorie = categorie.idCategorie');
         $this->db->order_by($trie,$order);
         $query = $this->db->get('produit');
         return $query->result();

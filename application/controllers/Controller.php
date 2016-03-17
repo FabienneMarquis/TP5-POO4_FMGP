@@ -23,12 +23,14 @@ class Controller extends CI_Controller
             redirect('/', 'refresh');
         }
     }
-    public function addClient(){
-            $this->load->view('Header');
-            $this->load->view('NavBar');
-            $this->load->view('addOk');
-            $this->load->view('Footer');
-}
+
+    public function addClient()
+    {
+        $this->load->view('Header');
+        $this->load->view('NavBar');
+        $this->load->view('addOk');
+        $this->load->view('Footer');
+    }
 
     /**
      * Function to receive the POST from the AddClient form
@@ -38,15 +40,15 @@ class Controller extends CI_Controller
         $data['nom'] = $this->input->post('nom', TRUE);
         $data['prenom'] = $this->input->post('prenom', TRUE);
         $data['ageClient'] = $this->input->post('age', TRUE);
-        $data['courrielClient'] = $this->input->post('nom', TRUE);
-        $data['adresse'] = $this->input->post('prenom', TRUE);
-        $data['idVille'] = $this->input->post('age', TRUE);
+        $data['courrielClient'] = $this->input->post('courriel', TRUE);
+        $data['adresse'] = $this->input->post('adresse', TRUE);
+        $data['idVille'] = $this->input->post('ville', TRUE);
         $bool = $this->client_model->add($data);
-    if ($bool==true){
-        redirect('/addClient', 'refresh');
-    }else{
-        redirect('/getAddClient', 'refresh');
-    }
+        if (!$bool . is_null()) {
+            redirect('/addClient', 'refresh');
+        } else {
+            redirect('/getAddClient', 'refresh');
+        }
 
     }
 
@@ -81,9 +83,9 @@ class Controller extends CI_Controller
         $data["adresseEmail"] = $this->input->post('email', TRUE);
         $data["motDePasse"] = sha1($this->input->post('pwd', TRUE));
         $bool = $this->user_m->signUp($data);
-        if(!bool.is_null()){
+        if (bool . is_null()) {
             redirect('/');
-        }else(redirect('/Controller/GetSignUp'));
+        } else(redirect('/Controller/GetSignUp'));
     }
 
 
@@ -114,14 +116,14 @@ class Controller extends CI_Controller
     public function postConsulter()
     {
 
-            $mot = $this->input->post('mot');
-            $categorie = $this->input->post('categorie');
-            $trie = $this->input->post('trie');
-            $order = $this->input->post('order');
+        $mot = $this->input->post('mot');
+        $categorie = $this->input->post('categorie');
+        $trie = $this->input->post('trie');
+        $order = $this->input->post('order');
 
-            $this->load->model('Produit_model');
-            $produits = $this->Produit_model->get_sorted_produits($mot, $categorie, $trie, $order);
-            echo json_encode($produits);
+        $this->load->model('Produit_model');
+        $produits = $this->Produit_model->get_sorted_produits($mot, $categorie, $trie, $order);
+        echo json_encode($produits);
 
     }
 
