@@ -4,13 +4,22 @@
     $(document).ready(function () {
         $("#submit").click(function (event) {
             event.preventDefault();
+            var id = '<?php echo $id?>' ;
+            var nom = $("input#nom").val();
+            var prenom = $("input#prenom").val();
+            var age = $("input#age").val();
+            var ville = $("input#ville").val();
+            var adresse = $("input#adresse").val();
             var courriel = $("input#email").val();
-            var password = $("input#pwd").val();
+
             jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "index.php/Controller/postModifyClient",
                 dataType: 'json',
-                data: {email: courriel, pwd: password}
+                data: {
+                    id : id, nom: nom, prenom: prenom, age: age, ville: ville,
+                    adresse: adresse, email: courriel
+                }
             })
         });
     });
@@ -18,9 +27,10 @@
 <div class="container">
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h4>Modifiez vos coordonnées <?php echo $id;?></h4></div>
+        <div class="panel-heading"><h4>Modifiez vos coordonnées <?php echo $id; ?></h4></div>
         <div class="panel-body">
-            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postModifyClient" role="form" class="form-horizontal">
+            <form method="post" action="<?php echo base_url() ?>index.php/Controller/postModifyClient" role="form"
+                  class="form-horizontal">
                 <div class="form-group row">
                     <label class="col-sm-2 form-control-label">Nom:</label>
                     <div class="col-sm-10">

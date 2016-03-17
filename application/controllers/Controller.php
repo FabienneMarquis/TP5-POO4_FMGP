@@ -150,13 +150,12 @@ class Controller extends CI_Controller
     public
     function postSelectClient()
     {
-
-//            $data['nom'] = $this->input->post('nom', TRUE);
-//            $data['prenom'] = $this->input->post('prenom', TRUE);
-//            $data['ageClient'] = $this->input->post('age', TRUE);
-//            $data['courrielClient'] = $this->input->post('nom', TRUE);
-//            $data['adresse'] = $this->input->post('prenom', TRUE);
-//            $data['idVille'] = $this->input->post('age', TRUE);
+            $data['nom'] = $this->input->post('nom', TRUE);
+            $data['prenom'] = $this->input->post('prenom', TRUE);
+            $data['ageClient'] = $this->input->post('age', TRUE);
+            $data['courrielClient'] = $this->input->post('nom', TRUE);
+            $data['adresse'] = $this->input->post('prenom', TRUE);
+            $data['idVille'] = $this->input->post('age', TRUE);
         redirect('/', 'refresh');
     }
 
@@ -189,7 +188,14 @@ class Controller extends CI_Controller
     public
     function postModifyClient()
     {
-
+        $id = $this->input->post('id',true);
+        $data['nom'] = $this->input->post('nom', TRUE);
+        $data['prenom'] = $this->input->post('prenom', TRUE);
+        $data['ageClient'] = $this->input->post('age', TRUE);
+        $data['courrielClient'] = $this->input->post('nom', TRUE);
+        $data['adresse'] = $this->input->post('prenom', TRUE);
+        $data['idVille'] = $this->input->post('age', TRUE);
+        $this->client_model->update($id, $data);
     }
 
     public
