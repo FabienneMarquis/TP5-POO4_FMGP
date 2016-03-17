@@ -8,7 +8,6 @@ USE `tp5php` ;
 DROP TABLE IF EXISTS `Utilisateur`;
 CREATE TABLE `Utilisateur` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nom` varchar(32) NOT NULL,
   `motDePasse` char(40) NOT NULL,
   `adresseEmail` varchar(128) NOT NULL,
   `hashValidation` char(32),

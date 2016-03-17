@@ -32,7 +32,7 @@ class Client_model extends CI_Model  {
 
     function find($id)
     {
-        $query = $this->db->get_where('client', array('id' => $id));
+        $query = $this->db->get_where('client', array('idClient' => $id));
         return $query->row();
     }
 

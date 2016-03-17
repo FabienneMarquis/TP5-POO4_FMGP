@@ -33,17 +33,17 @@ class Controller extends CI_Controller
      */
     public function postAddClient()
     {
-        $data['nom'] = $this->input->post('nom', TRUE);
-        $data['prenom'] = $this->input->post('prenom', TRUE);
+        $data['nomClient'] = $this->input->post('nom', TRUE);
+        $data['prenomClient'] = $this->input->post('prenom', TRUE);
         $data['ageClient'] = $this->input->post('age', TRUE);
         $data['courrielClient'] = $this->input->post('courriel', TRUE);
         $data['adresse'] = $this->input->post('adresse', TRUE);
         $data['idVille'] = $this->input->post('ville', TRUE);
         $bool = $this->client_model->add($data);
-        if (!$bool . is_null()) {
-            redirect('/addClient', 'refresh');
+        if (!$bool) {
+            redirect('/Controller/getAddClient', 'refresh');
         } else {
-            redirect('/getAddClient', 'refresh');
+            redirect('/Controller/getAddClient', 'refresh');
         }
 
     }
@@ -170,7 +170,7 @@ class Controller extends CI_Controller
                 $this->load->view('SelectClientToModify');
             } else {
                 $req = $this->client_model->find($id);
-                if(!$req.is_null()){
+                if(!$req == NULL){
                 $this->load->view('ModifyClient', array("id" => $id));
                 //loader les info du row dans le formulaire ...
                     }
