@@ -17,7 +17,11 @@ class Controller extends CI_Controller
         if (isset($this->session->userdata['isLoggedIn']) && $this->session->userdata['isLoggedIn']) {
             $this->load->view('Header');
             $this->load->view('NavBar');
-            $this->load->view('AddClient');
+            $query = $this->db->get('ville');
+            foreach ($query->result() as $row) {
+                $villes[] = $row;
+            }
+            $this->load->view('addClient', array('villes' => $villes));
             $this->load->view('Footer');
         } else {
             redirect('/', 'refresh');

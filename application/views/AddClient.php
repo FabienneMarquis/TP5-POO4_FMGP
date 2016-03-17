@@ -64,11 +64,9 @@
                     <label class="col-sm-2 form-control-label">Ville:</label>
                     <div class="col-sm-10">
                         <select name='ville' id='ville' class="form-control" placeholder="Ville">
-                            <?php
-                            $req=$this->bd->get('ville');
-                            while($donnees = $req->fetch()){
-                            ?><option value='<?php echo $donnees[1]; ?>'> <?php echo $donnees[1]; ?> </option>
-                            <?php } ?>
+                            <?php foreach ($villes as $ville) {
+                                echo '<option value = "' . $ville->idVille . '">' . $ville->nomVille . '</option >';
+                            } ?>
                         </select>
 
                     </div>
